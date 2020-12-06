@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 @using KataShoppingCart.Models;
 
@@ -8,30 +8,29 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Shopping Cart Demo - Products</title>
 </head>
 <body>
 
     <h3>Products List</h3>
-    <table cellpadding="2" cellspacing="2" border="1">
-        <tr>
-            <th>Item Sku</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Buy</th>
-        </tr>
-        @foreach (Product product in ViewBag.products)
-        {
-            <tr>
-                <td>@product.Id</td>
-                <td>@product.Name</td>
-                <td>@product.Price</td>
-                <td align="center">
-                    <a href="@Url.Action("Buy", "Cart", new { id = product.Id })">Buy Now</a>
-                </td>
-            </tr>
-        }
-    </table>
 
+    <div class="container mt-4">
+        <div class="row">
+            @foreach (Product product in ViewBag.products)
+            {
+                <div class="card" style="width: 25%;">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <h6 class="card-title">Item Sku: @product.Id</h6>
+                        <p class="card-text">Price: £@product.Price</p>
+                        <p>
+                            Add To Basket
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Buy", "Cart", new { id = product.Id })">+</a>
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/Product/Index">Shopping Cart Demo</a>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/Cart/Index">Basket</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Test Shopping Cart</h1>
+            <p class="lead">
+                This is a test application built for Keoghs interview process.
+            </p>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <footer class="page-footer font-small pt-4 text-center">
+                <hr />
+                <p>
+                    Built By Colin Roberts |
+                    <a href="https://colroberts.co.uk">Portfolio</a>
+                </p>
+            </footer>
+        </div>
+
+
+</body>
+</html>

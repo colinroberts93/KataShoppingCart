@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
 @using KataShoppingCart.Models;
@@ -9,44 +9,44 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Cart</title>
+    <title>Shopping Cart Demo - Basket</title>
 </head>
 <body>
-
-    <h3>Cart Page</h3>
-    <table cellpadding="2" cellspacing="2" border="1">
-        <tr>
-            <th>Option</th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
-        </tr>
-        @foreach (Item item in (List<Item>)Session["cart"])
-        {
+    <h3>Checkout</h3>
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td><a href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })">Remove</a></td>
-                <td>@item.Product.Id</td>
-                <td>@item.Product.Name</td>
-                <td>@item.Product.Price</td>
-                <td>@item.Quantity</td>
-                <td>@(item.Product.Price * item.Quantity)</td>
+                <th scope="col">Id</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Remove</th>
             </tr>
-        }
-        <tr>
-            <td align="right" colspan="6">Sum</td>
-            <td>
-                @{
-                    List<Item> cart = (List<Item>)Session["cart"];
-                    var total = cart.Sum(item => item.Product.Price * item.Quantity);
-                }
-                @total
-            </td>
-        </tr>
-    </table>
-    <br>
-    <a href="@Url.Action("Index", "Product")">Continue Shopping</a>
+        </thead>
+        <tbody>
+            @foreach (Item item in (List<Item>)Session["cart"])
+            {
+                <tr>
+                    <td>@item.Product.Id</td>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>£@item.Product.Price</td>
+                    <td>£@(item.Product.Price * item.Quantity)</td>
+                    <td><a class="btn btn-danger" href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })">X</a></td>
+                </tr>
+            }
+        </tbody>
+        <br />
 
+        @{
+            List<Item> cart = (List<Item>)Session["cart"];
+
+            var total = cart.Sum(item => item.Product.Price * item.Quantity);
+        }
+
+    </table>
+    <h4>Total Cost: £@total</h4>
+    <a href="@Url.Action("Index", "Product")">🢀 Continue Shopping</a>
 </body>
 </html>

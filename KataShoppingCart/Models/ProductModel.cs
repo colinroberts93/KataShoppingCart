@@ -13,19 +13,24 @@ namespace KataShoppingCart.Models
         {
             this.products = new List<Product>() {
                 new Product {
-                    Id = "p01",
-                    Name = "Name 1",
-                    Price = 5
+                    Id = "A",
+                    Name = "Vauxhall",
+                    Price = 10
                 },
                 new Product {
-                    Id = "p02",
-                    Name = "Name 2",
-                    Price = 2
+                    Id = "B",
+                    Name = "Ford",
+                    Price = 15
                 },
                 new Product {
-                    Id = "p03",
-                    Name = "Name 3",
-                    Price = 6
+                    Id = "C",
+                    Name = "Nissan",
+                    Price = 40
+                },
+                new Product {
+                    Id = "D",
+                    Name = "Tesla",
+                    Price = 55
                 }
             };
         }
